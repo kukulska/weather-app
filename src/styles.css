@@ -1,0 +1,73 @@
+h1 {
+  font-weight: 600;
+}
+
+form {
+  margin: 40px 40px 0 40px;
+}
+
+.content {
+  color: #455a64;
+  border: 1px solid #455a64;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 80px auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  text-align: center;
+}
+.row {
+  margin: 0;
+}
+
+.left-section {
+  padding: 0;
+  margin: 60px auto 40px auto;
+}
+
+.main-date {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+.main-time {
+  font-size: 16px;
+  color: #455a64;
+  margin: 0;
+}
+.left-section .fas.fa-sun {
+  font-size: 100px;
+  color: #ffce3a80;
+  padding: 50px;
+}
+
+.main-temperature {
+  font-size: larger;
+  font-weight: 600;
+  padding: 0;
+}
+.main-weather-summary {
+  padding: 0;
+}
+
+.main-weather-description {
+  text-align: left;
+}
+
+.main-details {
+  padding: 20px;
+  margin: 10px 0;
+  text-align: left;
+}
+
+.right-section {
+  padding: 0;
+  margin: 0;
+}
+.following-day {
+  height: 20%;
+  margin: 0;
+  background: #ffd9688a;
+  color: #455a64;
+}
