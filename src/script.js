@@ -1,5 +1,6 @@
-function showCurrentDate(now) {
-  let days = [
+function formatDate (timestamp){
+let now = new Date (timestamp)
+let days = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -7,8 +8,9 @@ function showCurrentDate(now) {
     "Thursday",
     "Friday",
     "Saturday",
-  ];
+  ]
   let day = days[now.getDay()];
+
   let months = [
     "Jan",
     "Feb",
@@ -29,20 +31,16 @@ function showCurrentDate(now) {
   return `${day}, ${month} ${date}`;
 }
 
-function showCurrentTime(now) {
-  let hours = now.getHours();
+function formatHours(timestamp){
+let now = new Date (timestamp)
+console.log(now)
+let hours = now.getHours();
   if (hours < 10){hours = `0${hours}`};
   let minutes = now.getMinutes();
   if (minutes < 10){minutes = `0${minutes}`};
 
-  return `${hours}:${minutes}`;
+  return `Last updated: ${hours}:${minutes}`;
 }
-
-let currentDate = document.querySelector("#current-date");
-currentDate.innerHTML = showCurrentDate(new Date());
-
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = showCurrentTime(new Date());
 
 // let temperatureInCelsius = 25
 // let displayedTemperature= document.querySelector("#displayed-temperature")
@@ -62,7 +60,8 @@ currentTime.innerHTML = showCurrentTime(new Date());
 // let temperatureFarenheit = document.querySelector("#farenheitSymbol")
 // temperatureFarenheit.addEventListener("click", chooseFarenheit)
 
-function showCurrentCityandWeather(response){
+
+function showCurrentCityDateTimeWeather(response){
 let currentCity = response.data.name
 let currentCityName = document.querySelector("#current-city")
 currentCityName.innerHTML = currentCity
@@ -82,13 +81,19 @@ windSpeed.innerHTML = `${currentWindSpeed} km/h`
 let currentHumidity = response.data.main.humidity
 let humidity = document.querySelector("#humidity")
 humidity.innerHTML = `${currentHumidity}%`
+
+let currentDate = document.querySelector("#current-date")
+currentDate.innerHTML = formatDate(response.data.dt * 1000)
+
+let currentTime = document.querySelector("#current-time")
+currentTime.innerHTML = formatHours(response.data.dt * 1000)
 }
 
 function searchCity (cityName){
 let units = "metric"
 let weatherApiKey = "af3fca1cbd91099bf648ee4accb9419f"
 let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${units}&appid=${weatherApiKey}`
-axios.get(weatherApiUrl).then(showCurrentCityandWeather)
+axios.get(weatherApiUrl).then(showCurrentCityDateTimeWeather)
 }
 
 function handleSubmit (event) {
@@ -109,7 +114,7 @@ function showPosition (position){
   let weatherApiKey = "af3fca1cbd91099bf648ee4accb9419f";
   let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${weatherApiKey}`;
 
-axios.get(weatherApiUrl).then(showCurrentCityandWeather)
+axios.get(weatherApiUrl).then(showCurrentCityDateTimeWeather)
 }
 
 function getCurrentLocation(){
