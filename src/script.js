@@ -33,13 +33,12 @@ let days = [
 
 function formatHours(timestamp){
 let now = new Date (timestamp)
-console.log(now)
 let hours = now.getHours();
   if (hours < 10){hours = `0${hours}`};
   let minutes = now.getMinutes();
   if (minutes < 10){minutes = `0${minutes}`};
 
-  return `Last updated: ${hours}:${minutes}`;
+  return `${hours}:${minutes}`;
 }
 
 function showCurrentCityDateTimeWeather(response){
@@ -74,11 +73,39 @@ let currentTime = document.querySelector("#current-time")
 currentTime.innerHTML = formatHours(response.data.dt * 1000)
 }
 
+function dispalyForecast(response){
+let forecastElement = document.querySelector("#forecast")
+forecastElement.innerHTML = null;
+let forecast = null;
+
+for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += 
+    `<div class="row following-day align-items-center" id="time-1">
+        <div class="col-5">
+            <span>${formatHours(forecast.dt*1000)}</span>
+        </div>
+        <div class="col-4">
+            <img src="http://openweathermap.org/img/wn/${
+          forecast.weather[0].icon}@2x.png">
+        </div>
+        <div class="col-3">
+            <span class="lowest-temp">${Math.round(forecast.main.temp_min)}°</span>
+             <br />
+            <span class="highest-temp"><strong>${Math.round(forecast.main.temp_max)}°</strong></span>
+        </div>
+      </div>`
+  }
+}
+
 function searchCity (cityName){
   let units = "metric"
   let weatherApiKey = "af3fca1cbd91099bf648ee4accb9419f"
   let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${units}&appid=${weatherApiKey}`
   axios.get(weatherApiUrl).then(showCurrentCityDateTimeWeather)
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=${units}&appid=${weatherApiKey}`;
+  axios.get(apiUrl).then(dispalyForecast);
 }
 
 function handleSubmit (event) {
@@ -96,6 +123,9 @@ function showPosition (position){
   let weatherApiKey = "af3fca1cbd91099bf648ee4accb9419f";
   let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${weatherApiKey}`;
   axios.get(weatherApiUrl).then(showCurrentCityDateTimeWeather)
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${units}&appid=${weatherApiKey}`;
+  axios.get(apiUrl).then(dispalyForecast);
 }
 
 function getCurrentLocation(){
