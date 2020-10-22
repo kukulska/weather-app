@@ -42,31 +42,12 @@ let hours = now.getHours();
   return `Last updated: ${hours}:${minutes}`;
 }
 
-// let temperatureInCelsius = 25
-// let displayedTemperature= document.querySelector("#displayed-temperature")
-// displayedTemperature.innerHTML = temperatureInCelsius
-
-// function chooseCelsius(){
-// displayedTemperature.innerHTML = temperatureInCelsius
-// }
-
-// function chooseFarenheit(){
-// displayedTemperature.innerHTML = temperatureInCelsius * 9/5 + 32
-// }
-
-// let temperatureCelsius = document.querySelector("#celsiusSymbol")
-// temperatureCelsius.addEventListener("click", chooseCelsius)
-
-// let temperatureFarenheit = document.querySelector("#farenheitSymbol")
-// temperatureFarenheit.addEventListener("click", chooseFarenheit)
-
-
 function showCurrentCityDateTimeWeather(response){
 let currentCity = response.data.name
 let currentCityName = document.querySelector("#current-city")
 currentCityName.innerHTML = currentCity
 
-let currentTemperature = Math.round(response.data.main.temp)
+currentTemperature = Math.round(response.data.main.temp)
 let temperature = document.querySelector("#displayed-temperature")
 temperature.innerHTML = currentTemperature
 
@@ -94,10 +75,10 @@ currentTime.innerHTML = formatHours(response.data.dt * 1000)
 }
 
 function searchCity (cityName){
-let units = "metric"
-let weatherApiKey = "af3fca1cbd91099bf648ee4accb9419f"
-let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${units}&appid=${weatherApiKey}`
-axios.get(weatherApiUrl).then(showCurrentCityDateTimeWeather)
+  let units = "metric"
+  let weatherApiKey = "af3fca1cbd91099bf648ee4accb9419f"
+  let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${units}&appid=${weatherApiKey}`
+  axios.get(weatherApiUrl).then(showCurrentCityDateTimeWeather)
 }
 
 function handleSubmit (event) {
@@ -108,22 +89,44 @@ function handleSubmit (event) {
   city.value = ""
 }
 
-let searchedCity = document.querySelector("#search-form");
-searchedCity.addEventListener("submit", handleSubmit);
-
 function showPosition (position){
   let latitude = position.coords.latitude
   let longitude = position.coords.longitude
   let units = "metric"
   let weatherApiKey = "af3fca1cbd91099bf648ee4accb9419f";
   let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${weatherApiKey}`;
-
-axios.get(weatherApiUrl).then(showCurrentCityDateTimeWeather)
+  axios.get(weatherApiUrl).then(showCurrentCityDateTimeWeather)
 }
 
 function getCurrentLocation(){
-navigator.geolocation.getCurrentPosition(showPosition)
+  navigator.geolocation.getCurrentPosition(showPosition)
 }
+
+function chooseCelsius(event){
+  event.preventDefault();
+  temperatureCelsius.classList.add("active")
+  temperatureFarenheit.classList.remove("active")
+  let displayTemperatureCelsius = document.querySelector("#displayed-temperature")
+  displayTemperatureCelsius.innerHTML = currentTemperature
+}
+
+function chooseFarenheit(event){
+  event.preventDefault();
+  temperatureCelsius.classList.remove("active")
+  temperatureFarenheit.classList.add("active")
+  let displayTemperatureFarenheit = document.querySelector("#displayed-temperature")
+  displayTemperatureFarenheit.innerHTML = Math.round(currentTemperature * 9/5 + 32)
+}
+let currentTemperature = null
+
+let temperatureCelsius = document.querySelector("#temperature-celsius")
+temperatureCelsius.addEventListener("click", chooseCelsius)
+
+let temperatureFarenheit = document.querySelector("#temperature-farenheit")
+temperatureFarenheit.addEventListener("click", chooseFarenheit)
+
+let searchedCity = document.querySelector("#search-form");
+searchedCity.addEventListener("submit", handleSubmit);
 
 let currentLocation = document.querySelector("#current-location")
 currentLocation.addEventListener("click", getCurrentLocation)
