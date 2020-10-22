@@ -74,6 +74,7 @@ form {
 
 .main-weather-summary {
   padding: 0;
+  text-transform: capitalize;
 }
 
 .main-weather-description {

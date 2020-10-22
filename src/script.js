@@ -50,7 +50,7 @@ currentTemperature = Math.round(response.data.main.temp)
 let temperature = document.querySelector("#displayed-temperature")
 temperature.innerHTML = currentTemperature
 
-let currentWeatherDescription = response.data.weather[0].main
+let currentWeatherDescription = response.data.weather[0].description
 let weather = document.querySelector("#current-weather")
 weather.innerHTML = currentWeatherDescription
 
