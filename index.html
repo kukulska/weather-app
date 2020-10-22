@@ -26,8 +26,11 @@
             <div class="col-6 left-section">
               <h1 id="current-city"></h1>
               <p class="main-date" id="current-date"></p>
-              <p class="main-time" id="current-time">Last updated:</p>
-              <img src="" alt="" id="weather-icon" />
+              <div>
+                <span>Last updated:</span>
+                <span class="main-time" id="current-time"></span>
+              </div>
+              <img src="" alt="" class="weather-icon" id="weather-icon" />
               <p>
                 <span
                   class="temperature-display"
@@ -39,45 +42,13 @@
                 </span>
               </p>
               <p class="main-weather-summary" id="current-weather"></p>
-              <div class="row">
-                <div class="col-md-4"></div>
-                <div
-                  class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description"
-                >
-                  Wind:
-                </div>
-                <div
-                  class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right"
-                  id="wind-speed"
-                ></div>
-                <div class="col-md-4"></div>
+              <div>
+                <span class="main-weather-description">Wind:</span>
+                <span id="wind-speed"></span>
               </div>
-              <div class="row">
-                <div class="col-md-4"></div>
-                <div
-                  class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description"
-                >
-                  Humidity:
-                </div>
-                <div
-                  class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right"
-                  id="humidity"
-                ></div>
-                <div class="col-md-4"></div>
-              </div>
-              <div class="row">
-                <div class="col-md-4"></div>
-                <div
-                  class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description"
-                >
-                  Precipitation:
-                </div>
-                <div
-                  class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right main-weather-description"
-                >
-                  12%
-                </div>
-                <div class="col-md-4"></div>
+              <div>
+                <span class="main-weather-description">Humidity:</span>
+                <span id="humidity"></span>
               </div>
               <form class="search-form" id="search-form">
                 <div>

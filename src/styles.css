@@ -42,6 +42,10 @@ form {
   margin: 0;
 }
 
+.weather-icon {
+  margin: 10px;
+}
+
 .left-section .fas.fa-sun {
   font-size: 100px;
   color: #ffce3a80;
@@ -73,12 +77,15 @@ form {
 }
 
 .main-weather-summary {
+  font-size: 18px;
+  font-weight: 500;
   padding: 0;
   text-transform: capitalize;
+  margin-bottom: 25px;
 }
 
 .main-weather-description {
-  text-align: left;
+  font-weight: 450;
 }
 
 .main-details {
