@@ -82,6 +82,10 @@ let currentHumidity = response.data.main.humidity
 let humidity = document.querySelector("#humidity")
 humidity.innerHTML = `${currentHumidity}%`
 
+let currentWeatherIconId = response.data.weather[0].icon
+let currentWeatherIcon = document.querySelector("#weather-icon")
+currentWeatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${currentWeatherIconId}@2x.png`)
+
 let currentDate = document.querySelector("#current-date")
 currentDate.innerHTML = formatDate(response.data.dt * 1000)
 
