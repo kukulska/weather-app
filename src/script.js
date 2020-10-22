@@ -82,14 +82,14 @@ for (let index = 0; index < 5; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += 
     `<div class="row following-day align-items-center" id="time-1">
-        <div class="col-5">
+        <div class="col-4">
             <span>${formatHours(forecast.dt*1000)}</span>
         </div>
         <div class="col-4">
             <img src="http://openweathermap.org/img/wn/${
           forecast.weather[0].icon}@2x.png">
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <span class="lowest-temp">${Math.round(forecast.main.temp_min)}°</span>
              <br />
             <span class="highest-temp"><strong>${Math.round(forecast.main.temp_max)}°</strong></span>

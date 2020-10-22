@@ -1,81 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="src/styles.css" />
-    <script src="https://kit.fontawesome.com/454486baaa.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/454486baaa.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Weather app</title>
-</head>
+  </head>
 
-<body>
-    <div class="container content">
-        <div class="row">
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="wrapper">
+          <div class="row">
             <div class="col-6 left-section">
-                <h1 id="current-city"></h1>
-                <p class="main-date" id="current-date"></p>
-                <p class="main-time" id="current-time">Last updated: </p>
-                <img src="" alt="" id="weather-icon">
-                <p class="main-temperature">
-                    <span id="displayed-temperature"></span>
-                    <a href="#" id="temperature-celsius" class="active">°C</a> | <a href="#" id="temperature-farenheit">°F</a>
-                </p>
-                <p class="main-weather-summary" id="current-weather"></p>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div
-                        class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description">
-                        Wind:</div>
-                    <div class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right" id="wind-speed"></div>
-                    <div class="col-md-4"></div>
+              <h1 id="current-city"></h1>
+              <p class="main-date" id="current-date"></p>
+              <p class="main-time" id="current-time">Last updated:</p>
+              <img src="" alt="" id="weather-icon" />
+              <p>
+                <span
+                  class="temperature-display"
+                  id="displayed-temperature"
+                ></span>
+                <span class="units-display">
+                  <a href="#" id="temperature-celsius" class="active">°C</a> |
+                  <a href="#" id="temperature-farenheit">°F</a>
+                </span>
+              </p>
+              <p class="main-weather-summary" id="current-weather"></p>
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div
+                  class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description"
+                >
+                  Wind:
                 </div>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div
-                        class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description">
-                        Humidity:</div>
-                    <div class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right" id="humidity"></div>
-                    <div class="col-md-4"></div>
+                <div
+                  class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right"
+                  id="wind-speed"
+                ></div>
+                <div class="col-md-4"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div
+                  class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description"
+                >
+                  Humidity:
                 </div>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div
-                        class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description">
-                        Precipitation:</div>
-                    <div
-                        class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right main-weather-description">
-                        12%</div>
-                    <div class="col-md-4"></div>
+                <div
+                  class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right"
+                  id="humidity"
+                ></div>
+                <div class="col-md-4"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div
+                  class="col-12 col-md-2 col-sm-6 text-center text-md-left text-sm-left main-weather-description"
+                >
+                  Precipitation:
                 </div>
-                <form class="search-form" id="search-form">
-                    <div>
-                        <div class="input-group ">
-                            <input type="search" placeholder="Type a city..." autofocus="on" autocomplete="off"
-                                class="form-control shadow-sm" id="city-input">
-                            <div class="input-group-append" id="button-addon4">
-                                <button type="submit"
-                                    class="btn btn-light shadow-sm btn-outline-secondary">Search</button>
-                                <button type="button" class="btn btn-light shadow-sm btn-outline-secondary"
-                                    id="current-location">Current</button>
-                            </div>
-                        </div>
+                <div
+                  class="col-12 col-md-2 col-sm-6 text-center text-md-right text-sm-right main-weather-description"
+                >
+                  12%
+                </div>
+                <div class="col-md-4"></div>
+              </div>
+              <form class="search-form" id="search-form">
+                <div>
+                  <div class="input-group">
+                    <input
+                      type="search"
+                      placeholder="Type a city..."
+                      autofocus="on"
+                      autocomplete="off"
+                      class="form-control shadow-sm"
+                      id="city-input"
+                    />
+                    <div class="input-group-append" id="button-addon4">
+                      <button
+                        type="submit"
+                        class="btn btn-light shadow-sm btn-outline-secondary"
+                      >
+                        Search
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-light shadow-sm btn-outline-secondary"
+                        id="current-location"
+                      >
+                        Current
+                      </button>
                     </div>
-                </form>
+                  </div>
+                </div>
+              </form>
             </div>
-            <div class="col-6 right-section" id="forecast">
-            </div>
+            <div class="col-6 right-section" id="forecast"></div>
+          </div>
         </div>
+        <span class="repository-link">
+          <a href="https://github.com/kukulska/weather-app" target="_blank">
+            Open-source code
+          </a>
+          by Agata Kukulska
+        </span>
+      </div>
     </div>
-    <span class="repository-link">
-        <a href="https://github.com/kukulska/weather-app" target="_blank"> Open-source code </a>
-        by Agata Kukulska
-    </span>
-    </div>
-</body>
-<script src="src/script.js"></script>
-
+  </body>
+  <script src="src/script.js"></script>
 </html>

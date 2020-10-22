@@ -8,14 +8,17 @@ form {
 
 .content {
   color: #455a64;
-  border: 1px solid #455a64;
-  border-radius: 5px;
-  box-sizing: border-box;
   margin: 80px auto 10px auto;
-  width: auto;
+  max-width: 800px;
   height: auto;
   padding: 0;
   text-align: center;
+}
+
+.wrapper {
+  border: 1px solid #455a64;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .row {
@@ -45,10 +48,18 @@ form {
   padding: 50px;
 }
 
-.main-temperature {
-  font-size: larger;
+.temperature-display {
+  font-size: 32px;
   font-weight: 600;
   padding: 0;
+}
+
+.units-display {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  position: relative;
+  top: -12px;
 }
 
 .active {
@@ -89,6 +100,6 @@ form {
 
 .repository-link {
   display: block;
-  margin: 10px auto;
-  text-align: center;
+  margin: 5px auto;
+  text-align: left;
 }
