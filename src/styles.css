@@ -5,6 +5,9 @@ h1 {
 form {
   margin: 40px 40px 0 40px;
 }
+h1 {
+  margin-bottom: 25px;
+}
 
 .content {
   color: #455a64;
