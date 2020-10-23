@@ -80,8 +80,9 @@ let forecast = null;
 
 for (let index = 0; index < 5; index++) {
     forecast = response.data.list[index];
+    let colorClass = backgroundColors[forecast.weather[0].icon]
     forecastElement.innerHTML += 
-    `<div class="row following-day align-items-center" id="time-1">
+    `<div class="row following-day align-items-center ${colorClass}" id="time-1">
         <div class="col-4">
             <span>${formatHours(forecast.dt*1000)}</span>
         </div>
@@ -160,5 +161,26 @@ searchedCity.addEventListener("submit", handleSubmit);
 
 let currentLocation = document.querySelector("#current-location")
 currentLocation.addEventListener("click", getCurrentLocation)
+
+let backgroundColors = {
+  "01d":"color-day-clear", 
+  "02d":"color-day-clear", 
+  "03d":"color-day-clouds", 
+  "04d":"color-day-clouds", 
+  "09d":"color-day-clouds", 
+  "10d":"color-day-rain", 
+  "11d":"color-day-rain", 
+  "13d":"color-day-mist-snow", 
+  "50d":"color-day-mist-snow",
+  "01n":"color-night-clear",
+  "02n":"color-night-clear",
+  "03n":"color-night-clouds",
+  "04n":"color-night-clouds",
+  "09n":"color-night-clouds",
+  "10n":"color-night-rain",
+  "11n":"color-night-rain",
+  "13n":"color-night-mist-snow ",
+  "50n":"color-night-mist-snow " 
+}
 
 searchCity ("Tokyo");

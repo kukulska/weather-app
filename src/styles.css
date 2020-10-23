@@ -49,12 +49,6 @@ h1 {
   margin: 10px;
 }
 
-.left-section .fas.fa-sun {
-  font-size: 100px;
-  color: #ffce3a80;
-  padding: 50px;
-}
-
 .temperature-display {
   font-size: 32px;
   font-weight: 600;
@@ -113,4 +107,36 @@ h1 {
   display: block;
   margin: 5px auto;
   text-align: left;
+}
+
+.color-day-clear {
+  background-color: rgba(255, 233, 226, 0.5);
+}
+
+.color-day-clouds {
+  background-color: rgba(216, 199, 193, 0.55);
+}
+
+.color-day-rain {
+  background-color: rgba(203, 174, 166, 0.4);
+}
+
+.color-day-mist-snow {
+  background-color: rgba(225, 215, 212, 0.5);
+}
+
+.color-night-clear {
+  background-color: rgba(193, 206, 219, 0.5);
+}
+
+.color-night-clouds {
+  background-color: rgba(136, 148, 161, 0.35);
+}
+
+.color-night-rain {
+  background-color: rgba(118, 151, 188, 0.2);
+}
+
+.color-night-mist-snow {
+  background-color: rgba(212, 221, 231, 0.7);
 }
