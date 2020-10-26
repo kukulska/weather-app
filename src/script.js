@@ -107,6 +107,9 @@ function searchCity (cityName){
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=${units}&appid=${weatherApiKey}`;
   axios.get(apiUrl).then(dispalyForecast);
+
+  let noPositionFound = document.querySelector("#no-position-found")
+  noPositionFound.innerHTML=""
 }
 
 function handleSubmit (event) {
@@ -127,10 +130,18 @@ function showPosition (position){
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${units}&appid=${weatherApiKey}`;
   axios.get(apiUrl).then(dispalyForecast);
+
+  let noPositionFound = document.querySelector("#no-position-found")
+  noPositionFound.innerHTML=""
+}
+
+function noPosition() {
+let noPositionFound = document.querySelector("#no-position-found")
+noPositionFound.innerHTML="Sorry, we can't get your location, please type a city."
 }
 
 function getCurrentLocation(){
-  navigator.geolocation.getCurrentPosition(showPosition)
+  navigator.geolocation.getCurrentPosition(showPosition, noPosition)
 }
 
 function chooseCelsius(event){

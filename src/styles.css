@@ -85,6 +85,12 @@ h1 {
   font-weight: 450;
 }
 
+.no-position-found {
+  color: rgb(236, 110, 76);
+  font-size: 14px;
+  margin-top: 24px;
+}
+
 .main-details {
   padding: 20px;
   margin: 10px 0;
