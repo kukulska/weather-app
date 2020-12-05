@@ -1,10 +1,12 @@
 h1 {
   font-weight: 600;
-  margin-bottom: 25px;
 }
 
 form {
   margin: 40px 40px 0 40px;
+}
+h1 {
+  margin-bottom: 25px;
 }
 
 .content {
